@@ -94,7 +94,6 @@ void process_non_interrative_mode(char *argv[])
 */
 void execute_commands_n(char **command, int count, char *argv)
 {
-
 	pid_t pid;
 	int i = 0, status;
 	char error_message[1024], number[20];
