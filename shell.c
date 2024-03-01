@@ -106,21 +106,17 @@ void free_two_string(char *first_string, char *second_string)
 */
 void execute_commands(char **command, int count, char *argv)
 {
-
 	pid_t pid;
 	int i = 0, status;
 	char copy_of_command[BUFFER_SIZE];
 
 	if (command[0] == NULL)
-	{
 		return;
-	}
 	else if (access(command[0], F_OK) == 0 || access(command[0], X_OK) == 0)
 	{
 		pid = fork();
 		if (pid < 0)
 		{
-			perror("Error\n");
 			exit(EXIT_FAILURE);
 		}
 		else if (pid == 0)
@@ -128,9 +124,7 @@ void execute_commands(char **command, int count, char *argv)
 			if (execve(*command, command, environ) == -1)
 			{
 				if (errno == EACCES)
-				{
 					exit(126);
-				}
 				exit(1);
 			}
 		}
