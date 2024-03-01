@@ -29,7 +29,7 @@ sprintf(count_str, "%d", 10);
 strcpy(status_pos, count_str);
 }
 
-comment_pos = strchr(processed_input, '#');
+comment_pos = _strchr(processed_input, '#');
 if (comment_pos != NULL)
 {
 *comment_pos = '\0';
