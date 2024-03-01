@@ -9,7 +9,7 @@
 */
 int main(int argc, char *argv[])
 {
-	if (argc < 2 && _strchr(argv[1], '|') == NULL)
+	if (argc < 2 && isatty(STDIN_FILENO))
 	{
 		process_interrative_mode(argv);
 	}
