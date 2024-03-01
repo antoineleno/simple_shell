@@ -13,6 +13,10 @@ void process_interrative_mode(char *argv[])
 
 	while (1)
 	{
+		if (!isatty(STDIN_FILENO))
+		{
+			process_non_interrative_mode(argv);
+		}
 		signal(SIGINT, sigint_handler);
 		display_prompt();
 		byte_read = getline(&input, &length, stdin);
