@@ -9,9 +9,9 @@
 int _search_path_and_ex(char *input, int i, char *argv)
 {
 	char *path;
-	char copy_of_input[1024];
+	char copy_of_input[1024], number[20];
 	int flag = 0;
-	char **args, **second_args;
+	char **args, **second_args, error_message[1024];
 
 	if (input == NULL || _strspn(input, " \t\n\r") == _strlen(input))
 	{
@@ -26,6 +26,16 @@ int _search_path_and_ex(char *input, int i, char *argv)
 		path = _search_path(args[0]);
 		if (path == NULL)
 		{
+			int_to_string(i, number);
+			_strcpy(error_message, argv);
+			_strcat(error_message, ": ");
+			_strcat(error_message, number);
+			_strcat(error_message, ": ");
+			_strcat(error_message, second_args[0]);
+			_strcat(error_message, ": not found\n");
+			write(STDERR_FILENO, error_message, _strlen(error_message));
+			i++;
+			exit(127);
 			free_allocation(args);
 			free_allocation(second_args);
 			return (flag);
