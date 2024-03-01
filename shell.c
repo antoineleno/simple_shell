@@ -125,12 +125,10 @@ void execute_commands(char **command, int count, char *argv)
 					exit(126);
 				exit(1);
 			}
-			
 		}
 		else
 		{
 			waitpid(pid, &status, 0);
-			exit(2);
 		}
 	}
 	else
