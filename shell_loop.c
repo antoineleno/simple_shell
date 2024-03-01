@@ -42,7 +42,6 @@ void process_interrative_mode(char *argv[])
 				}
 			}
 		}
-
 		i++;
 	}
 	_putchar('\n');
