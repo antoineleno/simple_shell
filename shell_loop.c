@@ -5,7 +5,7 @@
 */
 void process_interrative_mode(char *argv[])
 {
-	char *input = NULL, *copy_of_input;
+	char *input = NULL;
 	char **tokens;
 	ssize_t byte_read;
 	size_t length = 0;
@@ -22,20 +22,19 @@ void process_interrative_mode(char *argv[])
 			break;
 		}
 		flag = 0;
-		copy_of_input = remove_comments(input);
 		flag = exit_shell(input, argv[0], i);
 		if (flag == 0)
 		{
-			flag = command_separators(copy_of_input, i, argv[0]);
+			flag = command_separators(input, i, argv[0]);
 			if (flag == 0)
 			{
-				flag = build_int_function_management(copy_of_input, i, argv[0]);
+				flag = build_int_function_management(input, i, argv[0]);
 				if (flag == 0)
 				{
-					flag = _search_path_and_ex(copy_of_input, i, argv[0]);
+					flag = _search_path_and_ex(input, i, argv[0]);
 					if (flag == 0)
 					{
-						tokens = tokenize_string(copy_of_input);
+						tokens = tokenize_string(input);
 						execute_commands(tokens, i, argv[0]);
 						free_allocation(tokens);
 					}
