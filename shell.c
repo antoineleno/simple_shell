@@ -11,11 +11,11 @@ int main(int argc, char *argv[])
 {
 	if (argc < 2)
 	{
-		if (isatty(STDIN_FILENO))
+		if (_strchr(argv[1], '|') == NULL)
 		{
 			process_interrative_mode(argv);
 		}
-		else if (!isatty(STDIN_FILENO))
+		else
 		{
 			process_non_interrative_mode(argv);
 		}
