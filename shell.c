@@ -9,13 +9,16 @@
 */
 int main(int argc, char *argv[])
 {
-	if (argc < 2 && isatty(STDIN_FILENO))
+	if (argc < 2)
 	{
-		process_interrative_mode(argv);
-	}
-	else
-	{
-		process_non_interrative_mode(argv);
+		if (isatty(STDIN_FILENO))
+		{
+			process_interrative_mode(argv);
+		}
+		else
+		{
+			process_non_interrative_mode(argv);
+		}
 	}
 	return (0);
 }
