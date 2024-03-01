@@ -10,8 +10,9 @@ void remove_comments(char *input)
 char pid_str[20];
 char *pid_pos;
 char *status_pos;
-char *comment_pos;
+int i = 0;
 int len;
+char count_str[20];
 
 
 pid_pos = strstr(input, "$$");
@@ -23,18 +24,19 @@ _strcpy(pid_pos, pid_str);
 status_pos = strstr(input, "$?");
 if (status_pos != NULL)
 {
-char count_str[20];
-sprintf(count_str, "%d", 10);
+int_to_string(10, count_str);
 _strcpy(status_pos, count_str);
 }
-
-comment_pos = _strchr(input, '#');
-if (comment_pos != NULL)
+while (input[i] != '\0')
 {
-*comment_pos = '\0';
+	if (input[i] == '#' && input[i - 1] == ' ')
+	{
+		input[i] = '\0';
+	}
+	i++;
 }
 
-len = strlen(input);
+len = _strlen(input);
 while (len > 0 && (input[len - 1] == ' '
 || input[len - 1] == '\t' || input[len - 1] == '\n'))
 {
