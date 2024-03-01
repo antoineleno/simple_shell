@@ -59,7 +59,7 @@ void change_current_working_dir(char **args, char *argv, int count)
 	_strcat(current_working_dir, "/");
 	if (args[1] == NULL)
 	{
-		strcpy(previous_directory, current_working_dir);
+		_strcpy(previous_directory, current_working_dir);
 		home_dir = _getenv("HOME");
 		chdir(home_dir);
 		_setenv("PWD", "$HOME", 1);

@@ -130,7 +130,7 @@ void execute_commands(char **command, int count, char *argv)
 		else
 		{
 			waitpid(pid, &status, 0);
-			exit(2);
+			exit(0);
 		}
 	}
 	else

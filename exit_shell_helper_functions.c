@@ -52,7 +52,7 @@ void fre_mem1(char *argv, int count, char **args, char *copy_of_a1, char *copy_o
 {
 	int exit_code;
 	char error_message_for_exit[1024], number[20];
-	exit_code = atoi(args[1]);
+	exit_code = _atoi(args[1]);
 	if (_strchr(args[1], '-') != NULL)
 	{
 		int_to_string(count, number);
