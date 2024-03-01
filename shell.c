@@ -10,6 +10,7 @@
 
 int main(int argc, char *argv[])
 {
+	(void) argc;
 	if (isatty(STDIN_FILENO))
 	{
 	char *input = NULL;
