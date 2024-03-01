@@ -10,11 +10,11 @@
 
 int main(int argc, char *argv[])
 {
-	if (isatty(STDIN_FILENO) && argc <= 2)
+	if (argc < 2)
 	{
 		process_interrative_mode(argv);
 	}
-	else
+	else if (argc >= 2)
 	{
 		process_non_interrative_mode(argv);
 	}
