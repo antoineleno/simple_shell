@@ -15,9 +15,12 @@ int main(int argc, char *argv[])
 	{
 		process_interrative_mode(argv);
 	}
+	else if (!isatty(fileno(stdin)))
+	{
+		process_non_interrative_mode(argv);
+	}
 	return (0);
 }
-
 
 
 
