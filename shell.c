@@ -10,13 +10,13 @@
 
 int main(int argc, char *argv[])
 {
-	if (argc < 2)
-	{
-		process_interrative_mode(argv);
-	}
-	else if (argc >= 2)
+	if (_strchr(argv[1], '|') != NULL)
 	{
 		process_non_interrative_mode(argv);
+	}
+	else
+	{
+		process_interrative_mode(argv);
 	}
 	return (0);
 }
