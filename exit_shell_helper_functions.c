@@ -43,32 +43,35 @@ void fre_mem2(char *argv, int count, char **args, char *copy_of_a1, char *cop)
 
 /**
  * fre_mem1 - Function to free mem and exit in exit_shell function
- * @args: Array
- * @copy_of_a1: Copy of input
- * @copy_of_input: copy of input
+ * @a: Array
+ * @co: Copy of input
+ * @cop: copy of input
+ * @argv: Command line argument
+ * @c: count
  * @input: Input
 */
-void fre_mem1(char *argv, int count, char **args, char *copy_of_a1, char *copy_of_input, char *input)
+void fre_mem1(char *argv, int c, char **a, char *cop, char *co, char *input)
 {
 	int exit_code;
-	char error_message_for_exit[1024], number[20];
-	exit_code = _atoi(args[1]);
-	if (_strchr(args[1], '-') != NULL)
+	char error_mess_for_exit[1024], number[20];
+
+	exit_code = _atoi(a[1]);
+	if (_strchr(a[1], '-') != NULL)
 	{
-		int_to_string(count, number);
-		_strcpy(error_message_for_exit, argv);
-		_strcat(error_message_for_exit, ": ");
-		_strcat(error_message_for_exit, number);
-		_strcat(error_message_for_exit, ": ");
-		_strcat(error_message_for_exit, "exit: Illegal number: ");
-		_strcat(error_message_for_exit, args[1]);
-		_strcat(error_message_for_exit, "\n");
-		write(STDERR_FILENO,error_message_for_exit, _strlen(error_message_for_exit));
+		int_to_string(c, number);
+		_strcpy(error_mess_for_exit, argv);
+		_strcat(error_mess_for_exit, ": ");
+		_strcat(error_mess_for_exit, number);
+		_strcat(error_mess_for_exit, ": ");
+		_strcat(error_mess_for_exit, "exit: Illegal number: ");
+		_strcat(error_mess_for_exit, a[1]);
+		_strcat(error_mess_for_exit, "\n");
+		write(STDERR_FILENO, error_mess_for_exit, _strlen(error_mess_for_exit));
 		exit(2);
 	}
-	free(copy_of_a1);
-	free(copy_of_input);
-	free_allocation(args);
+	free(cop);
+	free(co);
+	free_allocation(a);
 	free(input);
 	exit(exit_code);
 }
