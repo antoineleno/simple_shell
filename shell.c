@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 		{
 			process_interrative_mode(argv);
 		}
-		else
+		else if (!isatty(STDIN_FILENO))
 		{
 			process_non_interrative_mode(argv);
 		}
