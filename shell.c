@@ -9,11 +9,12 @@
 */
 int main(int argc, char *argv[])
 {
-	if (argc < 2)
+	(void)argc;
+	if (isatty(0))
 	{
 		process_interrative_mode(argv);
 	}
-	else
+	else if (isatty(1))
 	{
 		process_non_interrative_mode(argv);
 	}
