@@ -7,17 +7,15 @@
  * @argv: Argument entered
  * Return: Always 0 (Success)
 */
-
 int main(int argc, char *argv[])
 {
-	(void) argc;
-	if (!isatty(STDIN_FILENO))
+	if (argc < 2 && _strchr(argv[1], '|') == NULL)
 	{
-		process_non_interrative_mode(argv);
+		process_interrative_mode(argv);
 	}
 	else
 	{
-		process_interrative_mode(argv);
+		process_non_interrative_mode(argv);
 	}
 	return (0);
 }
