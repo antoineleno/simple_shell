@@ -8,7 +8,7 @@
 */
 int build_int_function_management(char *input, int count, char *argv)
 {
-	char copy_of_input[100], **args;
+	char copy_of_input[1024], **args;
 
 	if (input == NULL || _strspn(input, " \t\n\r") == _strlen(input))
 	{
