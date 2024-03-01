@@ -1,4 +1,90 @@
 #include "shell.h"
+/**
+ * process_interrative_mode - Function to be execute if interrative mode
+ * @argv: Argument enter by the user
+*/
+void process_interrative_mode(char *argv[])
+{
+	char *input = NULL;
+	char **tokens;
+	ssize_t byte_read;
+	size_t length = 0;
+	int i = 1, flag;
+
+	while (1)
+	{
+		signal(SIGINT, sigint_handler);
+		display_prompt();
+		byte_read = getline(&input, &length, stdin);
+		if (byte_read == -1)
+		{
+			free(input);
+			break;
+		}
+		flag = 0;
+		flag = exit_shell(input, argv[0], i);
+		if (flag == 0)
+		{
+			flag = command_separators(input, i, argv[0]);
+			if (flag == 0)
+			{
+				flag = build_int_function_management(input, i, argv[0]);
+				if (flag == 0)
+				{
+					flag = _search_path_and_ex(input, i, argv[0]);
+					if (flag == 0)
+					{
+						tokens = tokenize_string(input);
+						execute_commands(tokens, i, argv[0]);
+						free_allocation(tokens);
+					}
+				}
+			}
+		}
+
+		i++;
+	}
+	_putchar('\n');
+}
+
+/**
+ * process_non_interrative_mode - Function to be
+ * execute if non interrative mode
+ * @argv: Armument enter by the user
+*/
+void process_non_interrative_mode(char *argv[])
+{
+	char *input = NULL;
+	char **tokens;
+	ssize_t byte_read;
+	size_t length = 0;
+	int i = 1, flag = 0;
+
+	while ((byte_read = getline(&input, &length, stdin)) != -1)
+	{
+		flag = exit_shell(input, argv[0], i);
+		if (flag == 0)
+		{
+			flag = command_separators(input, i, argv[0]);
+			if (flag == 0)
+			{
+				flag = build_int_function_management(input, i, argv[0]);
+				if (flag == 0)
+				{
+					flag = _search_path_and_ex(input, i, argv[0]);
+					if (flag == 0)
+					{
+						tokens = tokenize_string(input);
+						execute_commands_n(tokens, i, argv[0]);
+						free_allocation(tokens);
+					}
+				}
+			}
+		}
+		i++;
+	}
+}
+
 
 /**
  * execute_commands_n - Function to execute commands
