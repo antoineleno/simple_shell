@@ -8,15 +8,17 @@
  * Return: Always 0 (Success)
 */
 
-
-int main(int argc, char *argv[]) {
-    (void) argc;
-    if (isatty(STDIN_FILENO)) {
-       process_interrative_mode(argv);
-    } else {
-        process_non_interrative_mode(argv);
-    }
-    return 0;
+int main(int argc, char *argv[])
+{
+	if (argc < 2)
+	{
+		process_interrative_mode(argv);
+	}
+	else if (argc >= 2)
+	{
+		process_non_interrative_mode(argv);
+	}
+	return (0);
 }
 
 
