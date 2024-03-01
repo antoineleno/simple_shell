@@ -51,7 +51,7 @@ int build_int_function_management(char *input, int count, char *argv);
 void process_interrative_mode(char *argv[]);
 void process_non_interrative_mode(char *argv[]);
 void print_env(void);
-char *remove_comments(char *input);
+void remove_comments(char *input);
 int command_separators(char *input, int count, char *argv);
 char **tokenize_separator_string(char *string);
 char *handle_malloc_faillure(char *string);

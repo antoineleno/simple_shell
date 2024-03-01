@@ -5,43 +5,41 @@
  *
  * Return: Always 0;
  */
-char *remove_comments(char *input)
+void remove_comments(char *input)
 {
 char pid_str[20];
 char *pid_pos;
 char *status_pos;
 char *comment_pos;
-char *processed_input;
 int len;
-processed_input = _strdup(input);
 
-pid_pos = strstr(processed_input, "$$");
+
+pid_pos = strstr(input, "$$");
 if (pid_pos != NULL)
 {
 snprintf(pid_str, sizeof(pid_str), "%d", getpid());
-strcpy(pid_pos, pid_str);
+_strcpy(pid_pos, pid_str);
 }
-status_pos = strstr(processed_input, "$?");
+status_pos = strstr(input, "$?");
 if (status_pos != NULL)
 {
 char count_str[20];
 sprintf(count_str, "%d", 10);
-strcpy(status_pos, count_str);
+_strcpy(status_pos, count_str);
 }
 
-comment_pos = _strchr(processed_input, '#');
+comment_pos = _strchr(input, '#');
 if (comment_pos != NULL)
 {
 *comment_pos = '\0';
 }
 
-len = strlen(processed_input);
-while (len > 0 && (processed_input[len - 1] == ' '
-|| processed_input[len - 1] == '\t' || processed_input[len - 1] == '\n'))
+len = strlen(input);
+while (len > 0 && (input[len - 1] == ' '
+|| input[len - 1] == '\t' || input[len - 1] == '\n'))
 {
-processed_input[--len] = '\0';
+input[--len] = '\0';
 }
-return (processed_input);
 }
 
 /**

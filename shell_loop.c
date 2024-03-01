@@ -22,6 +22,7 @@ void process_interrative_mode(char *argv[])
 			break;
 		}
 		flag = 0;
+		remove_comments(input);
 		flag = exit_shell(input, argv[0], i);
 		if (flag == 0)
 		{
