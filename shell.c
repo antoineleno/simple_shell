@@ -15,11 +15,7 @@ int main(int argc, char *argv[])
 	{
 		process_interrative_mode(argv);
 	}
-	else
-	{
-		process_non_interrative_mode(argv);
-	}
-	exit(0);
+	return (0);
 }
 
 
