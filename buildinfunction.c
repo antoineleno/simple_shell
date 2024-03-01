@@ -40,7 +40,7 @@ int exit_shell(char *input, char *argv, int count)
 		}
 		else if (_strcmp(args[0], "exit") == 0 && args[1] != NULL)
 		{
-			fre_mem1(args, copy_of_a1, copy_of_input, input);
+			fre_mem1(argv, count, args, copy_of_a1, copy_of_input, input);
 		}
 	}
 	free_allocation(args);

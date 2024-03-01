@@ -68,7 +68,7 @@ int tail_of_comments(char **args, char *c_in, char *s_c_in);
 int exit_shell(char *input, char *argv, int count);
 void free_5memory(char **antoine, char **args, char *s_c_in, char *c_in);
 void allocate_and_tok(char *input, char **s_c_in, char **c_in, char ***args);
-void fre_mem1(char **args, char *copy_of_a1, char *copy_of_input, char *input);
+void fre_mem1(char *argv, int count, char **args, char *copy_of_a1, char *copy_of_input, char *input);
 void fre_mem2(char *argv, int count, char **args, char *copy_of_a1, char *cop);
 void free_me3(char **args, char *input, char *copy_of_a1);
 void free_mem4(char **args, char *copy_of_a1);
